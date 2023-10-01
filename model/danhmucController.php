@@ -25,7 +25,8 @@ function addDanhMuc($name){
     return $thongbao;
     }
 }
-function updateDanhMuc($id, $name){
+function updateDanhMuc($id){
+    $name = $_POST['name'];
     if(empty($name)){
         $thongbao = "Không được để trống tên danh mục";
         return $thongbao;
