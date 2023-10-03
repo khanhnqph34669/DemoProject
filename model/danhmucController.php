@@ -28,14 +28,14 @@ function addDanhMuc($name){
 function updateDanhMuc($id){
     $name = $_POST['name'];
     if(empty($name)){
-        $thongbao = "Không được để trống tên danh mục";
-        return $thongbao;
+        $_SESSION['thongbao'] = "Không được để trống tên danh mục";
+        return $_SESSION['thongbao'];
     }
     else{
         $sql = "UPDATE danhmuc SET name='$name' WHERE id=$id";
     execute($sql);
-    $thongbao = "Cập nhật thành công";
-    return $thongbao;
+    $_SESSION['thongbao'] = "Cập nhật thành công";
+    return $_SESSION['thongbao'];
     }
 }
 function deleteDanhMuc($id){

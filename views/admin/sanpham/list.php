@@ -17,13 +17,17 @@
                         
                         foreach($listSanPham as $row){
                             extract($row);
-                            //extract là hàm dùng để tách các phần tử trong mảng ra thành các biến riêng biệt
-                            $edit = "index.php?act=updatedanhmuc&id=".$id;
-                            $delete = "index.php?act=deletedanhmuc&id=".$id;
+                            
+                            $edit = "index.php?act=updatesanpham&id=".$id;
+                            $delete = "index.php?act=deletesanpham&id=".$id;
+
                             echo '<tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td>'.$id.'</td>
                                     <td>'.$name.'</td>
+                                    <td>'.$price.'</td>
+                                    <td><img src="../../images/'.$img.'" alt=""></td>
+                                    <td>'.$traffic.'</td>
                                     <td>
                                         <a href="'.$edit.'"><input type="button" value="Sửa"></a>
                                         <a href="'.$delete.'"><input type="button" value="Xóa"></a>
@@ -58,5 +62,5 @@
                     <input type="button" value="Chọn tất cả">
                     <input type="button" value="Bỏ chọn tất cả">
                     <input type="button" value="Xóa các mục đã chọn">
-                    <a href="index.php?act=danhmuc"><input type="button" value="Thêm mới">  </a>                  
+                    <a href="index.php?act=addsanpham"><input type="button" value="Thêm mới">  </a>                  
             </div>

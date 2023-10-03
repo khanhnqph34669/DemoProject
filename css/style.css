@@ -166,7 +166,7 @@
 .formContent input[type="text"]{
    width: 100%;
    border: 1px solid #ccc;
-   padding:5px 10px;
+   padding:10px;
    border-radius: 5px;
 }
 
@@ -200,6 +200,28 @@
     color: rgb(24, 24, 156);
     text-decoration: underline;
  }
+
+ /* Để cố định kích thước của trường nhập và đảm bảo các trường nhập giá cùng kích thước */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  
+  input[type="number"]:hover {
+    border-color: #1d2022; 
+  }
+  
+  
+  input[type="number"]:focus {
+    outline: none; 
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
 
  .menudoc ul{
     margin: 0;
@@ -284,12 +306,12 @@
     border-collapse: collapse;
 }
 
-.list table th:nth-child(1){
-    width: 10%;
+.list table th{
+  
     padding: 20px;
     background-color: #199137;
 }
-.list table th:nth-child(2){
+/* .list table th:nth-child(2){
     width: 30%;
     background-color: #199137;
 }
@@ -300,7 +322,8 @@
 .list table th:nth-child(4){
     width: 20%;
     background-color: #199137;
-}
+} */
+
 
 .list table td{
     padding: 10px 20px;
@@ -331,4 +354,30 @@
     color: red;
     font-size: 1vw;
     background-color: #eee;
+}
+
+.slec select{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.slec select option{
+    padding: 10px 20px;
+    background-color: #f8eded;
+    margin-bottom: 10px;
+}
+
+.texta textarea{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #fff;
+    margin-bottom: 10px;
 }

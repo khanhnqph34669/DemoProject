@@ -1,6 +1,7 @@
 <?php
 include_once '../layoutAdmin/header.php';
 require_once "../../model/danhmucController.php";
+require_once "../../model/sanphamController.php";
 
 
 if(isset($_GET['act'])){
@@ -13,7 +14,7 @@ if(isset($_GET['act'])){
             $thongbao = addDanhMuc($_POST['name']);
             include_once '../admin/danhmuc/add.php';
             break;
-        case 'editdanhmuc':
+        case 'listdanhmuc':
             $list = getAll();
             include_once '../admin/danhmuc/list.php';
             break;
@@ -35,6 +36,16 @@ if(isset($_GET['act'])){
             include_once '../admin/danhmuc/update.php';
             break;
         case 'hanghoa':
+            include_once 'sanpham/add.php';
+            break;
+        case 'listsanpham':
+            $listSanPham = getAllSanPham();
+            include_once 'sanpham/list.php';
+            break;
+        case 'addsanpham':
+            if(isset($_POST['submitbtn'])){
+                $thongbao = addSanPham($_POST['name'],$_POST['price'],$_POST['des'],$_FILES['img']['name'],$_POST['danhmuc']);
+            }
             include_once 'sanpham/add.php';
             break;
         case 'user':
