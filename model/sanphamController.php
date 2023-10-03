@@ -53,4 +53,15 @@ function deleteSanPham($id){
     return $_SESSION['thongbao'];
     
 }
+
+function getSanPhamByDanhMuc($id,$keywords){
+    if($id==0){
+        $sql = "SELECT * FROM sanpham WHERE name LIKE '%$keywords%'";
+    }
+    else{
+        $sql = "SELECT * FROM sanpham WHERE iddanhmuc=$id AND name LIKE '%$keywords%'";
+    }
+    $result = query($sql);
+    return $result;
+}
 ?>

@@ -39,7 +39,16 @@ if(isset($_GET['act'])){
             include_once 'sanpham/add.php';
             break;
         case 'listsanpham':
+            if(isset($_POST['searchlist'])){
+                $keywords = $_POST['keywords'];
+                $iddanhmuc = $_POST['iddanhmuc'];
+                $listSanPham = getSanPhamByDanhMuc($iddanhmuc,$keywords);
+                $listDanhMuc = getAll();
+                include_once 'sanpham/list.php';
+                break;
+            }
             $listSanPham = getAllSanPham();
+            $listDanhMuc = getAll();
             include_once 'sanpham/list.php';
             break;
         case 'addsanpham':

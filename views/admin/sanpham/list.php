@@ -3,6 +3,20 @@
         </div>
         <div class="row formContent">
             <div class="row mb10 list">
+
+            <form action="index.php?act=listsanpham" method="post">
+                <input type="text" name="keywords">
+                <select name="iddanhmuc" id="">
+                    <option value="0" selected>Tất cả</option>
+                    <?php
+                        foreach($listDanhMuc as $row){
+                            extract($row);
+                            echo '<option value="'.$id.'">'.$name.'</option>';
+                        }
+                    ?>
+                </select>
+                <input type="submit" name="searchlist">
+            </form>
                 <table>
                     <tr>
                         <th></th>
