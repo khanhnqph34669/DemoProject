@@ -48,6 +48,6 @@ extract($listDanhMuc);
                     </div>
             </form>
         </div>
-        <span><?php if(isset($thongbao)) echo $thongbao; ?></span>
+        <span class="spanErr"><?php if(isset($thongbao)) echo $thongbao; ?></span>
     </div>
     </body>

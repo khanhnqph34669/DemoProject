@@ -8,14 +8,14 @@ function getAllSanPham(){
     return $result;
 }
 function getOneSanPham($id){
-    $sql = "SELECT * FROM sanpham WHERE id=?";
-    $result = query_one($sql,['id'=>$id]);
+    $sql = "SELECT * FROM sanpham WHERE id=$id";
+    $result = query_one($sql);
     return $result;
-    
+
 }
 function addSanPham($name,$price,$des,$img,$danhmuc){
-    if(empty($name)){
-        $thongbao = "Không được để trống tên danh mục";
+    if(empty($name) || empty($price) || empty($des) || empty($img) || empty($danhmuc)){
+        $thongbao = "Không được để trống trường dữ liệu nào cả";
         return $thongbao;
     }
     else{
@@ -35,23 +35,35 @@ function addSanPham($name,$price,$des,$img,$danhmuc){
 }
 function updateSanPham($id){
     $name = $_POST['name'];
-    if(empty($name)){
-        $thongbao = "Không được để trống tên danh mục";
-        return $thongbao;
+    $price = $_POST['price'];
+    $des = $_POST['des'];
+    $danhmuc = $_POST['danhmuc'];
+    $img = $_FILES['img']['name'];
+    $target_dir = "../../images/";
+    $target_file = $target_dir . basename($_FILES["img"]["name"]);  
+    move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+    if(empty($name) || empty($price) || empty($des) || empty($img) || empty($danhmuc)){
+        $_SESSION['thongbao'] = "Không được để trống trường dữ liệu nào cả";
+        return $_SESSION['thongbao'];
     }
     else{
-        $sql = "UPDATE danhmuc SET name='$name' WHERE id=$id";
-    execute($sql);
-    $thongbao = "Cập nhật thành công";
-    return $thongbao;
+       if(empty($img)){
+           $sql = "UPDATE sanpham SET name='$name',price='$price',des='$des',iddanhmuc='$danhmuc' WHERE id=$id";
+       }
+       else{
+           $sql = "UPDATE sanpham SET name='$name',price='$price',des='$des',img='$img',iddanhmuc='$danhmuc' WHERE id=$id";
+       }
+        $_SESSION['thongbao'] = "Cập nhật thành công";
+        execute($sql);
+        return $_SESSION['thongbao'];
+    
     }
 }
 function deleteSanPham($id){
-    $sql = "DELETE FROM danhmuc WHERE id=$id";
+    $sql = "DELETE FROM sanpham WHERE id=$id";
     execute($sql);
     $_SESSION['thongbao'] = "";
     return $_SESSION['thongbao'];
-    
 }
 
 function getSanPhamByDanhMuc($id,$keywords){

@@ -40,10 +40,10 @@
                                     <td>'.$id.'</td>
                                     <td>'.$name.'</td>
                                     <td>'.$price.'</td>
-                                    <td><img src="../../images/'.$img.'" alt=""></td>
+                                    <td><img src="../../images/'.$img.'" alt="" class="imgproduct"></td>
                                     <td>'.$traffic.'</td>
                                     <td>
-                                        <a href="'.$edit.'"><input type="button" value="Sửa"></a>
+                                        <a href="'.$edit.'"><input type="button" value="Sửa"></a> 
                                         <a href="'.$delete.'"><input type="button" value="Xóa"></a>
                                     </td>
                                 </tr>';

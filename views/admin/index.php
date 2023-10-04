@@ -57,6 +57,26 @@ if(isset($_GET['act'])){
             }
             include_once 'sanpham/add.php';
             break;
+        case 'deletesanpham':
+            $del = deleteSanPham($_GET['id']);
+            $thongbao = $del;
+            $listSanPham = getAllSanPham();
+            $listDanhMuc = getAll();
+            include_once 'sanpham/list.php';
+            break;
+        case 'updatesanpham':
+            $id = $_GET['id'];
+            $updateSanPham = getOneSanPham($id);
+            $listDanhMuc = getAll();
+            include_once '../admin/sanpham/update.php';
+            break;
+        case 'confirmUpdate':
+            $id = $_POST['id'];
+            $thongbao = updateSanPham($id);
+            $updateSanPham = getOneSanPham($id);
+            $listDanhMuc = getAll();
+            include_once '../admin/sanpham/update.php';
+            break;
         case 'user':
             include_once 'user.php';
             break;
