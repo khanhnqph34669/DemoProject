@@ -30,7 +30,7 @@ function addSanPham($name,$price,$des,$img,$danhmuc){
         $des = $_POST['des'];
         $danhmuc = $_POST['danhmuc'];
         $img = $_FILES['img']['name'];
-        $target_dir = "../../images/";
+        $target_dir = "../../views/images/";
         $target_file = $target_dir . basename($_FILES["img"]["name"]);
         move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
         $sql = "INSERT INTO sanpham(name,price,des,img,iddanhmuc) VALUES('$name','$price','$des','$img','$danhmuc')";
@@ -45,26 +45,22 @@ function updateSanPham($id){
     $des = $_POST['des'];
     $danhmuc = $_POST['danhmuc'];
     $img = $_FILES['img']['name'];
-    $target_dir = "../../images/";
+    $target_dir = "../../views/images/";
     $target_file = $target_dir . basename($_FILES["img"]["name"]);  
     move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
-    if(empty($name) || empty($price) || empty($des) || empty($img) || empty($danhmuc)){
-        $_SESSION['thongbao'] = "Không được để trống trường dữ liệu nào cả";
-        return $_SESSION['thongbao'];
-    }
-    else{
        if(empty($img)){
            $sql = "UPDATE sanpham SET name='$name',price='$price',des='$des',iddanhmuc='$danhmuc' WHERE id=$id";
+           execute($sql);
        }
        else{
            $sql = "UPDATE sanpham SET name='$name',price='$price',des='$des',img='$img',iddanhmuc='$danhmuc' WHERE id=$id";
+           execute($sql);
        }
         $_SESSION['thongbao'] = "Cập nhật thành công";
-        execute($sql);
+        
         return $_SESSION['thongbao'];
     
     }
-}
 function deleteSanPham($id){
     $sql = "DELETE FROM sanpham WHERE id=$id";
     execute($sql);

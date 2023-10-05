@@ -72,10 +72,12 @@ if(isset($_GET['act'])){
             include_once '../admin/sanpham/update.php';
             break;
         case 'confirmUpdate':
-            $id = $_POST['id'];
+            if(isset($_POST['update'])){
+                $id = $_POST['id'];
             $thongbao = updateSanPham($id);
             $updateSanPham = getOneSanPham($id);
             $listDanhMuc = getAll();
+            }
             include_once '../admin/sanpham/update.php';
             break;
         case 'user':
