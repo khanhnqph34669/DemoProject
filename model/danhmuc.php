@@ -3,7 +3,7 @@
 require_once "connect.php";
 
 function getAll(){
-    $sql = "SELECT * FROM danhmuc";
+    $sql = "SELECT * FROM danhmuc ORDER BY name ASC";
     $result = query($sql);
     return $result;
 }
@@ -39,10 +39,28 @@ function updateDanhMuc($id){
     }
 }
 function deleteDanhMuc($id){
-    $sql = "DELETE FROM danhmuc WHERE id=$id";
-    execute($sql);
-    $_SESSION['thongbao'] = "";
-    return $_SESSION['thongbao'];
-    
+   $result = kiemTraSanPham($id);
+    if($result == true){
+         $sql = "DELETE FROM danhmuc WHERE id=$id";
+         execute($sql);
+         $_SESSION['thongbao'] = "Xóa thành công";
+         return $_SESSION['thongbao'];
+    }
+    else{
+        $_SESSION['thongbao'] = "Không thể xoá danh mục này, vì danh mục còn sản phẩm";
+        return $_SESSION['thongbao'];
+    }
+}
+
+
+function kiemTraSanPham($id){
+    $sql = "SELECT * FROM sanpham WHERE iddanhmuc=$id";
+    $result = query($sql);
+    if(count($result) > 0){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
 ?>

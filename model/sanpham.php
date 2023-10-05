@@ -7,6 +7,12 @@ function getAllSanPham(){
     $result = query($sql);
     return $result;
 }
+function getAllSanPham_home(){
+    $sql = "SELECT * FROM sanpham where 1 order by id desc limit 0,9";
+    $result = query($sql);
+    return $result;
+}
+
 function getOneSanPham($id){
     $sql = "SELECT * FROM sanpham WHERE id=$id";
     $result = query_one($sql);

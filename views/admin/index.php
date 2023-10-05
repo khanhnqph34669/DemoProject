@@ -1,7 +1,7 @@
 <?php
 include_once '../layoutAdmin/header.php';
-require_once "../../model/danhmucController.php";
-require_once "../../model/sanphamController.php";
+require_once "../../model/danhmuc.php";
+require_once "../../model/sanpham.php";
 
 
 if(isset($_GET['act'])){

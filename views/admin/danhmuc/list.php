@@ -32,23 +32,27 @@
                 </table>
                 <span><?php 
                 if (isset($_SESSION['thongbao'])) {
-                $_SESSION['thongbao'] = '<script>
-                var popup = document.createElement("div");
-                popup.className = "popup";
-                popup.innerHTML = "Xóa thành công!";
-                document.body.appendChild(popup);
-                setTimeout(function() {
-                    popup.classList.add("show");
-                    setTimeout(function() {
-                        popup.classList.remove("show");
-                        document.body.removeChild(popup);
-                    }, 1000); // 5 giây
-                }, 1000);
-                </script>';
-                echo $_SESSION['thongbao'];
-                unset($_SESSION['thongbao']);// Xóa thông báo sau khi hiển thị
-            }
-            
+                    $message = ($_SESSION['thongbao'] == "Không thể xoá danh mục này, vì danh mục còn sản phẩm") ? 
+                               "Xoá không thành công, vui lòng sửa các sản phẩm có trong danh mục trước khi xoá" : 
+                               "Xóa thành công!";
+                
+                    echo "<script>
+                            var popup = document.createElement('div');
+                            popup.className = 'popup';
+                            popup.innerHTML = '$message';
+                            document.body.appendChild(popup);
+                            setTimeout(function() {
+                                popup.classList.add('show');
+                                setTimeout(function() {
+                                    popup.classList.remove('show');
+                                    document.body.removeChild(popup);
+                                }, 5000);
+                            }, 1000);
+                          </script>";
+                
+                    unset($_SESSION['thongbao']); // Xóa thông báo sau khi hiển thị
+                }
+                
                     ?></span>
             </div>
             <div class="row mb10">
