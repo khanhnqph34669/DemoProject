@@ -1,6 +1,6 @@
 <?php
-require_once "../../model/sanphamController.php";
-require_once "../../model/danhmucController.php";
+require_once "../../model/sanpham.php";
+require_once "../../model/danhmuc.php";
 $listDanhMuc = getAll();
 extract($listDanhMuc);
 ?>

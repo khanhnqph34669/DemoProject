@@ -4,6 +4,7 @@ require_once "../../model/danhmuc.php";
 require_once "../../model/sanpham.php";
 
 
+
 if(isset($_GET['act'])){
     $act = $_GET['act'];
     switch ($act){

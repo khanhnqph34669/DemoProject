@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <div class="row">
             <div class="row header formTitle"><h2>Danh sách sản phẩm</h2></div>
         </div>
@@ -40,7 +43,7 @@
                                     <td>'.$id.'</td>
                                     <td>'.$name.'</td>
                                     <td>'.$price.'</td>
-                                    <td><img src="../../images/'.$img.'" alt="" class="imgproduct"></td>
+                                    <td><img src="../../views/images/'.$img.'" alt="" class="imgproduct"></td>
                                     <td>'.$traffic.'</td>
                                     <td>
                                         <a href="'.$edit.'"><input type="button" value="Sửa"></a> 
