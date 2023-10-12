@@ -1,8 +1,11 @@
 <?php
+session_start();
 include_once '../layoutAdmin/header.php';
 require_once "../../model/danhmuc.php";
 require_once "../../model/sanpham.php";
-
+require_once "../../model/check_session.php";
+require_once "../../model/comment.php";
+require_once "../../model/account.php";
 
 
 if(isset($_GET['act'])){
@@ -83,10 +86,12 @@ if(isset($_GET['act'])){
             include_once '../admin/sanpham/list.php';
             break;
         case 'user':
-            include_once 'user.php';
+            $list_user = get_info_user_all();
+            include_once 'taikhoan/list.php';
             break;
         case 'comment':
-            include_once 'comment.php';
+            $list_comment = load_all_comment();
+            include_once 'binhluan/listcomment.php';
             break;
         case 'thongke':
             include_once 'thongke.php';

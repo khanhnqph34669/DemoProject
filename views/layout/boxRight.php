@@ -24,17 +24,22 @@
                 <a href="">Quên mật khẩu</a>
             </li>
             <li>
-                <a href="">Đăng kí thành viên</a>
+                <a href="index.php?act=register">Đăng kí thành viên</a>
             </li>
         </div>';
     } else {
         extract($_SESSION['user']);
         echo '<div class="content formAccount">
-        <p>Xin chào, bạn đã đăng nhập!</p>
-        <ul>
-            <li><a href="#">Cập nhật tài khoản</a></li>';
-        if ($roles == 1) {
-            echo '<li><a href="admin/index.php">Quản trị</a></li>';
+        <p>Xin chào ' . $name .', bạn đã đăng nhập!</p>
+        ';
+        echo  '<img class="avt" src="views/images/'.$images.'" alt="images">';
+        if($roles == 0){
+            echo  '<img class="tichxanh" src="views/images/tichxanh.png" alt="images">';
+        }
+        echo '<ul>
+            <li><a href="index.php?act=update_profile&id='.$_SESSION['user']['id'].'">Cập nhật tài khoản</a></li>';
+        if ($roles == 0) {
+            echo '<li><a href="index.php?act=admin">Quản trị</a></li>';
         }
         echo '<li><a href="index.php?act=logout">Đăng xuất</a></li>
         </ul>

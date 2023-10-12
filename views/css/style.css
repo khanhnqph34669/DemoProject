@@ -52,7 +52,7 @@
 }
 
 .boxright {
-  float: left;
+  float: right;
   width: 24%;
 }
 
@@ -563,3 +563,39 @@ input[type="checkbox"] {
   color: #fff;
   cursor: pointer;
 }
+
+.avt{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin-left: 50px;
+}
+
+.avtp{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin-left: 300px;
+}
+
+
+.tichxanh{
+  width: 30px;
+  margin-left: -40px;
+}
+.reg{
+  margin-top: 50px;
+}
+
+.formReg input[type="text"],
+.formReg input[type="password"],
+.formReg input[type="email"]{
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+  

@@ -12,7 +12,11 @@ include_once "global.php";
     $listdanhmuc = getAll();
     $sanphamtop = getAllSanPham_top();
     
-
+   if(isset($_SESSION['thongbao'])){
+        echo $_SESSION['thongbao'];
+        unset($_SESSION['thongbao']);
+    }
+    
 
     if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -53,9 +57,41 @@ include_once "global.php";
             }
             include_once "views/user/home.php";
             break;
+        case 'bl':
+            $id_user = $_POST['iduser'];
+            $idsp = $_GET['id'];
+            $bl = insert_comment($id_user,$_POST['noidung'],$idsp,$_POST['date']);
+            header("location:index.php?act=chitietsanpham&id=$idsp") ;
+            break;
         case 'logout':
             unset($_SESSION['user']);
             header("location:index.php");
+            break;
+        case 'register':
+            include_once "views/user/taikhoan/register.php";
+            break;
+        case 'cfregister':
+            $nof = register($_POST['name'],$_POST['email'],$_POST['pass'],$_POST['repass']);
+            include_once "views/user/home.php";
+            break;
+        case 'admin':
+           //Nếu có roles = 0 thì mới được vào trang admin
+            if(isset($_SESSION['user'])){
+                $roles = $_SESSION['user']['roles'];
+                if($roles == 0){
+                    header("location:views/admin/index.php");
+                }
+                else{
+                    header("location:index.php");
+                }
+            }
+            else{
+                include_once "views/user/home.php";
+            }
+            break;
+        case 'update_profile':
+            $info = get_info_user($_GET['id']);
+            include_once "views/user/taikhoan/update.php";
             break;
         default:
             include_once "views/user/home.php";
