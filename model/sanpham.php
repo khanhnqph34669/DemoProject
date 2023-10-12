@@ -7,8 +7,18 @@ function getAllSanPham(){
     $result = query($sql);
     return $result;
 }
+function getAllSanPham_danhmuc($id){
+    $sql = "SELECT * FROM sanpham where iddanhmuc=$id";
+    $result = query($sql);
+    return $result;
+}
 function getAllSanPham_home(){
     $sql = "SELECT * FROM sanpham where 1 order by id desc limit 0,9";
+    $result = query($sql);
+    return $result;
+}
+function getAllSanPham_top(){
+    $sql = "SELECT * FROM sanpham where 1 order by traffic desc limit 0,10";
     $result = query($sql);
     return $result;
 }
@@ -16,6 +26,13 @@ function getAllSanPham_home(){
 function getOneSanPham($id){
     $sql = "SELECT * FROM sanpham WHERE id=$id";
     $result = query_one($sql);
+    return $result;
+
+}
+
+function getOneSanPham_cungloai($id,$iddanhmuc){
+    $sql = "SELECT * FROM sanpham WHERE iddanhmuc=".$iddanhmuc." AND id<>$id";
+    $result = query($sql);
     return $result;
 
 }
@@ -75,6 +92,12 @@ function getSanPhamByDanhMuc($id,$keywords){
     else{
         $sql = "SELECT * FROM sanpham WHERE iddanhmuc=$id AND name LIKE '%$keywords%'";
     }
+    $result = query($sql);
+    return $result;
+}
+
+function getSanPhamByKeywords($keywords){
+    $sql = "SELECT * FROM sanpham WHERE name LIKE '%$keywords%'";
     $result = query($sql);
     return $result;
 }

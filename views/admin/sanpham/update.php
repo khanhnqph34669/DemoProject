@@ -1,6 +1,7 @@
 <?php
     if(is_array($updateSanPham)){
         extract($updateSanPham);
+        
    }
 ?>
 
@@ -37,7 +38,8 @@
                         <?php
                             foreach($listDanhMuc as $row){
                                 extract($row);
-                                echo '<option value="'.$id.'">'.$name.'</option>';
+                                $selected = ($iddanhmuc == $id) ? "selected" : "";
+                                echo '<option value="'.$id.'" '.$selected.'>'.$name.'</option>';
                             }
                         ?>
                     </select>

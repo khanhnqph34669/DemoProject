@@ -41,7 +41,7 @@
         <div class="row">
             <?php
             $i = 0;
-            foreach ($sanphamnew as $row) {
+            foreach ($timkiem as $row) {
                 extract($row);
                 $img = $image_path . $img;
                 if (($i == 2) || ($i == 5) || ($i == 8)) {

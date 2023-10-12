@@ -34,7 +34,8 @@ if(isset($_GET['act'])){
             $id = $_POST['id'];
             $thongbao = updateDanhMuc($id);
             $update = getOne($id);
-            include_once '../admin/danhmuc/update.php';
+            $list = getAll();
+            include_once '../admin/danhmuc/list.php';
             break;
         case 'hanghoa':
             include_once 'sanpham/add.php';
@@ -78,7 +79,8 @@ if(isset($_GET['act'])){
             $updateSanPham = getOneSanPham($id);
             $listDanhMuc = getAll();
             }
-            include_once '../admin/sanpham/update.php';
+            $listSanPham = getAllSanPham();
+            include_once '../admin/sanpham/list.php';
             break;
         case 'user':
             include_once 'user.php';
