@@ -49,13 +49,26 @@
                 <iframe src="views/user/comment/comment.php?idpro=<?php echo $id ?>" frameborder="0" width="100%" height="300px">
                 </iframe>
                 <form class="comment-form" action="index.php?act=bl&id=<?php echo $id ?>" method="post">
-                    <input type="hidden" name="iduser" value="<?php echo $_SESSION['user']['id']?>">
+                    <input type="hidden" name="iduser" value="<?php 
+                        if( isset($_SESSION['user']['id'])){
+                            echo $_SESSION['user']['id'];
+                        }
+                        else{
+                            echo "";
+                        }
+                    ?>">
                     <input type="text" name="date" id="date" pattern="\d{4}-\d{2}-\d{2} \d{2}:\d{2}" value="<?php echo date("Y-m-d H:i"); ?>" hidden>
                     <div class="form-group">
                         <label for="comment">Bình luận:</label>
                         <textarea class="form-control" id="noidung" name="noidung" rows="3" placeholder="Thêm bình luận"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Đăng</button>
+                    <?php
+                    if (isset($_SESSION['user']['id'])) {
+                        echo '<button type="submit" class="btn btn-primary" name="submit">Gửi</button>';
+                    } else {
+                        echo 'Bạn phải đăng nhập để bình luận <a href="index.php?act=login">Đăng nhập</a><br>';
+                    }
+                    ?>
                 </form>
             </div>
         </div>
