@@ -72,4 +72,5 @@
         include_once "views/layout/boxRight.php";
         ?>
     </div>
+    
 </div>

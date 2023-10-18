@@ -24,6 +24,9 @@ include_once "global.php";
         case 'gioithieu':
             include_once "views/user/about.php";
             break;
+        case 'lienhe':
+            include_once "views/user/lienhe.php";
+            break;
         case 'chitietsanpham':
             $id = $_GET['id'];
             $detail = getOneSanPham($id);
@@ -91,8 +94,36 @@ include_once "global.php";
             break;
         case 'update_profile':
             $info = get_info_user($_GET['id']);
+            $roles2 = get_name_roles($_GET['id']);
             include_once "views/user/taikhoan/update.php";
             break;
+        case 'updateinfo':
+            $update = update_info($_POST['id_user'],$_FILES['images']['name'],$_POST['name'],$_POST['email'],$_POST['address'],$_POST['phone']);
+            include_once "views/user/home.php";
+            break;
+        case 'changepass':
+            $id = $_GET['id'];
+            $user = get_info_user($id);
+            include_once "views/user/taikhoan/changePass.php";
+            break;
+        case 'cfchange':
+            $update = update_pass($_POST['id'],$_POST['oldpass'],$_POST['newpass'],$_POST['repass']);
+            header("location:index.php?act=changepass&id=".$_POST['id']);
+            break;
+        case 'fogotpass':
+            include_once "views/user/taikhoan/fogotpassword.php";
+            break;
+        case 'cf_fogotpass':
+            $email = $_POST['email'];
+            $user =  fogotpass($email);
+            if($user == null){
+                $thongbao = "Email không tồn tại";
+            }
+            else {
+                $thongbao = "Mật khẩu của bạn là : ".$user."";
+            }
+            include_once "views/user/taikhoan/fogotpassword.php";
+            break ;
         default:
             include_once "views/user/home.php";
             break;
@@ -101,5 +132,6 @@ include_once "global.php";
     else {
     include_once "views/user/home.php";
     }   
+
 
 include_once "views/layout/footer.php";

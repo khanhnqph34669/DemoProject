@@ -6,6 +6,11 @@ require_once "../../model/sanpham.php";
 require_once "../../model/check_session.php";
 require_once "../../model/comment.php";
 require_once "../../model/account.php";
+require_once "../../model/thongke.php";
+
+$roles = $_SESSION['user']['roles'];
+ checkSession($roles);
+
 
 
 if(isset($_GET['act'])){
@@ -93,8 +98,33 @@ if(isset($_GET['act'])){
             $list_comment = load_all_comment();
             include_once 'binhluan/listcomment.php';
             break;
+        case 'updatetaikhoan':
+            $id = $_GET['id'];
+            $update = getOneUser($id);
+            $listRoles = get_roles_all();
+            include_once 'taikhoan/update.php';
+            break;
+        case 'confirmUpdateUser':
+            $update = update_info_user($_POST['id_user'],$_FILES['images']['name'],$_POST['name'],$_POST['email'],$_POST['address'],$_POST['phone'],$_POST['passwords'],$_POST['roles']);
+            $list_user = get_info_user_all();
+            include_once 'taikhoan/list.php';
+            break;
+        case 'deletetaikhoan':
+            $del = delete_user($_GET['id']);
+            $list_user = get_info_user_all();
+            include_once 'taikhoan/list.php';
+            break;
+        case 'deletecomment':
+            $del = delete_comment($_GET['id']);
+            $list_comment = load_all_comment();
+            include_once 'binhluan/listcomment.php';
+            break;
         case 'thongke':
-            include_once 'thongke.php';
+            $list_thongke = load_all_thongke();
+            include_once 'thongke/thongke.php';
+            break;
+        case 'chart':
+            include_once 'thongke/bieudo.php';
             break;
         default:
             include_once 'home.php';

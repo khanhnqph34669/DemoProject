@@ -21,7 +21,7 @@
                 </div>
             </form>
             <li>
-                <a href="">Quên mật khẩu</a>
+                <a href="index.php?act=fogotpass">Quên mật khẩu</a>
             </li>
             <li>
                 <a href="index.php?act=register">Đăng kí thành viên</a>
@@ -35,9 +35,12 @@
         echo  '<img class="avt" src="views/images/'.$images.'" alt="images">';
         if($roles == 0){
             echo  '<img class="tichxanh" src="views/images/tichxanh.png" alt="images">';
+           
         }
+        
         echo '<ul>
-            <li><a href="index.php?act=update_profile&id='.$_SESSION['user']['id'].'">Cập nhật tài khoản</a></li>';
+            <li><a href="index.php?act=update_profile&id='.$_SESSION['user']['id'].'">Cập nhật thông tin</a></li>';
+            echo '<li><a href="index.php?act=changepass&id='.$_SESSION['user']['id'].'">Đổi mật khẩu</a></li>';
         if ($roles == 0) {
             echo '<li><a href="index.php?act=admin">Quản trị</a></li>';
         }
