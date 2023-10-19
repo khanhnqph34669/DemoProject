@@ -10,13 +10,13 @@
             <div class=" row formContent formReg ">
                 <form action="index.php?act=cfchange" method="post">
                     <label for="pass">Mật khẩu cũ</label>
-                    <input type="password" name="oldpass" id="oldpass" placeholder="Mật khẩu">
+                    <input type="password" name="oldpass" id="oldpass" placeholder="Mật khẩu" required>
                     <label for="">Mật khẩu mới</label>
-                    <input type="password" name="newpass" id="pass" placeholder="Mật khẩu">
+                    <input type="password" name="newpass" id="pass" placeholder="Mật khẩu" required>
                     <label for="repass">Nhập lại mật khẩu mới</label>
-                    <input type="password" name="repass" id="repass" placeholder="Nhập lại mật khẩu">
+                    <input type="password" name="repass" id="repass" placeholder="Nhập lại mật khẩu" required>
                     <input type="hidden" name="id" value="<?php echo $id?>">
-                    <input type="submit" class="reg" name="updatepass" value="Đổi mật khẩu">
+                    <input type="submit" class="reg" name="updatepass" value="Đổi mật khẩu" required>
                     <input type="reset" value="Nhập lại">
                 </form>
             </div>

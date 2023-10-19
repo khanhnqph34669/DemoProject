@@ -98,6 +98,14 @@ if(isset($_GET['act'])){
             $list_comment = load_all_comment();
             include_once 'binhluan/listcomment.php';
             break;
+        case 'addtaikhoan':
+            $listRoles = get_roles_all();
+            include_once 'taikhoan/add.php';
+            break;
+        case 'cfregister2':
+            $thongbao = register($_POST['name'],$_POST['email'],$_POST['pass'],$_POST['repass']);
+            header('location: index.php?act=user');
+            break;
         case 'updatetaikhoan':
             $id = $_GET['id'];
             $update = getOneUser($id);

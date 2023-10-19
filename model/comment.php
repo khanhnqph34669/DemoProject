@@ -18,3 +18,5 @@ function delete_comment($id){
     $comment = execute($sql);
     return $comment;
 }
+
+

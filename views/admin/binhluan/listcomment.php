@@ -24,7 +24,7 @@
                 <th></th>
                 <th>ID</th>
                 <th>NỘI DUNG BÌNH LUẬN</th>
-                <th>USER</th>
+                <th>ID_USER</th>
                 <th>PRODUCT</th>
                 <th>DATE</th>
                 <th></th>
@@ -37,7 +37,7 @@
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td>' . $id . '</td>
                                     <td>' . $content . '</td>
-                                    <td>' . $id_khachhang . '</td>
+                                    <td>' . $id_khachhang. '</td>
                                     <td>' . $id_sanpham . '</td>
                                     <td>' . $datecomment . '</td>
                                     <td>
